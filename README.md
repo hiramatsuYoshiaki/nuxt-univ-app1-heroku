@@ -31,12 +31,29 @@ $ npm run generate
 
 For detailed explanation on how things work, checkout [Nuxt.js docs](https://nuxtjs.org).
 
-
+## Heroku へデプロイするための設定を行う。
+1.pakege.json
+package.json 内の heroku-postbuild スクリプトを使って、Heroku に npm run build を実行するよう伝えます。
+```
+"scripts": {
+  "dev": "nuxt",
+  "build": "nuxt build",
+  "start": "nuxt start",
+  "heroku-postbuild": "npm run build"
+}
+```
+2. Procfile
+Heroku はアプリの dyno によって実行されるコマンドを指定する Procfile (ファイル拡張子を付けずにファイル名を Procfile という名前にします）を使用します。Procfile を起動するのはとてもシンプルで、以下の行を含める必要があります
+```
+web: npm run start
+```
 
 ## GitHub リポジトリの作成
 1. GitHub ログイン後のトップページから、Repositories の New ボタンをクリックします。
 2. Create a new repository の画面に遷移するので、リポジトリ名、ライセンス等を入力。Initialize this repository with a READMEはチェックせず画面下のほうにある Create repository ボタンをクリックします。
  
+
+
 ## プロジェクトを GitHub に Push する
 1. git add -A
 2. git commit -m "first commit"
@@ -48,8 +65,18 @@ ex:https://qiita.com/sho7650/items/ebd87c5dc2c4c7abb8f0
 1. Heroku 上でアプリケーションを動かすためには、Heroku アプリケーションが必要です。感覚としては、空の箱を一つ準備して、ソースコードをそこへ放り込むと、Webアプリケーションが動く、というイメージです。まず、この空の箱を準備します。Heroku へログインして、Heroku ダッシュボード画面へ入ります。アプリケーション一覧の画面になりますので、ここで右上の「New」をクリックしてプルダウンメニューからCreate new appをクリックします。 
 2. Heroku アプリケーションを作成する画面になります、App name は Herokuアプリケーションへアクセスするときの URLの一部になります。ここで指定した App name が、https://<App name>.herokuapp.com としてアクセスできるようになります。ドメイン名の一分になるので、世界中で唯一の名前であることが必須となります。入力しながら、使えるかどうかお試しください。面倒な場合は空欄にしておけば、自動的にアプリケーション名が割り振られます。 
 
+## ディプロイ設定
+1. Heroku ダッシュボードの「setting」タブに移動してください。
+2. config varsに入力します。
+```
+host : 0.0.0.0 
+NPM_CONFIG_PRODUCTION : false
+NODE_ENV : production 
+```
+
+
 ## GitHub と連携しよう。
-1. Heroku アプリケーションを作成した後、ダッシュボードの「Deploy」タブにいるのではないでしょうか。もし、違うタブにいるようであれば「Deploy」へクリックして移動してください。 
+1. Heroku ダッシュボードの「Deploy」タブに移動してください。
 2. 下部の Deployment method という欄の、GitHubアイコンの「GitHub」をクリックします。 
 3. 「Connect to GitHub」ボタンをクリックします。 
 4. GitHubでの認可画面が出てきますので、「Authorize heroku」ボタンをクリックします。 
