@@ -62,18 +62,18 @@ web: npm run start
 
 ## herokuアプリを作成
 ex:https://qiita.com/sho7650/items/ebd87c5dc2c4c7abb8f0 
-1. Heroku 上でアプリケーションを動かすためには、Heroku アプリケーションが必要です。感覚としては、空の箱を一つ準備して、ソースコードをそこへ放り込むと、Webアプリケーションが動く、というイメージです。まず、この空の箱を準備します。Heroku へログインして、Heroku ダッシュボード画面へ入ります。アプリケーション一覧の画面になりますので、ここで右上の「New」をクリックしてプルダウンメニューからCreate new appをクリックします。 
-2. Heroku アプリケーションを作成する画面になります、App name は Herokuアプリケーションへアクセスするときの URLの一部になります。ここで指定した App name が、https://<App name>.herokuapp.com としてアクセスできるようになります。ドメイン名の一分になるので、世界中で唯一の名前であることが必須となります。入力しながら、使えるかどうかお試しください。面倒な場合は空欄にしておけば、自動的にアプリケーション名が割り振られます。 
+1. Heroku へログインして、Heroku ダッシュボード画面へ入ります。
+2. Heroku 上でアプリケーションを動かすためには、Heroku アプリケーションが必要です。感覚としては、空の箱を一つ準備して、ソースコードをそこへ放り込むと、Webアプリケーションが動く、というイメージです。まず、この空の箱を準備します。アプリケーション一覧の画面になりますので、ここで右上の「New」をクリックしてプルダウンメニューからCreate new appをクリックします。 
+3. Heroku アプリケーションを作成する画面になります、App name は Herokuアプリケーションへアクセスするときの URLの一部になります。ここで指定した App name が、https://<App name>.herokuapp.com としてアクセスできるようになります。ドメイン名の一分になるので、世界中で唯一の名前であることが必須となります。入力しながら、使えるかどうかお試しください。面倒な場合は空欄にしておけば、自動的にアプリケーション名が割り振られます。 
 
 ## ディプロイ設定
 1. Heroku ダッシュボードの「setting」タブに移動してください。
-2. config varsに入力します。
+2. config varsに入力しADDします。
 ```
-host : 0.0.0.0 
-NPM_CONFIG_PRODUCTION : false
-NODE_ENV : production 
+key:host  value: 0.0.0.0 
+key:NPM_CONFIG_PRODUCTION value:false
+key:NODE_ENV value:production 
 ```
-
 
 ## GitHub と連携しよう。
 1. Heroku ダッシュボードの「Deploy」タブに移動してください。
